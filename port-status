@@ -1,0 +1,23 @@
+#! /usr/bin/env python3
+
+import socket
+import sys, traceback
+import argparse
+from contextlib import closing
+
+parser = argparse.ArgumentParser(description="A Port Scanner, tells whether a given port is open on a given target IP address")
+parser.add_argument("ip", help="The IP address whose port you wish to check")
+parser.add_argument("port", help="The port whose status you wish to check")
+args = parser.parse_args()
+
+def scan():
+    print("Scanning port " + str(args.port) + " at " + str(args.ip) + " ...")
+    with closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as target:
+      target.settimeout(3)
+      test = target.connect_ex((args.ip, int(args.port)))
+      if test == 0:
+          print("Port " + str(args.port) + ": Open")
+      else:
+          print("Port " + str(args.port) + ": Closed")
+              
+scan()
