@@ -10,6 +10,6 @@ ie
 $port-status 0.0.0.0 80
 
 yields either
-Port 80: Open
+>>Port 80: Open
 or
-Port 80: Closed
+>>Port 80: Closed
