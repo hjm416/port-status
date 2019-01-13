@@ -11,6 +11,7 @@ parser.add_argument("port", help="The port whose status you wish to check")
 args = parser.parse_args()
 
 def scan():
+  try:
     print("Scanning port " + str(args.port) + " at " + str(args.ip) + " ...")
     with closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as target:
       target.settimeout(3)
@@ -19,5 +20,7 @@ def scan():
           print("Port " + str(args.port) + ": Open")
       else:
           print("Port " + str(args.port) + ": Closed")
-              
+   except KeyboardInterrupt:
+      print("KeyboardInterrupt: Exiting...")
+      sys.exit()
 scan()
