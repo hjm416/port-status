@@ -1,5 +1,5 @@
 # port-status
-Checks whether a given port is open at a given IP address
+A quick way to check whether a given port is open at a given IP address
 
 Usage:
 
